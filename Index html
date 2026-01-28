@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OnlineNow – Remote Jobs in the USA</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Find legit remote jobs and sweepstakes offers for U.S. residents. OnlineNow helps you discover new opportunities daily." />
+  <meta name="keywords" content="remote jobs USA, online work, sweepstakes, CPA offers, OnlineNow" />
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="OnlineNow – Remote Jobs in the USA" />
+  <meta property="og:description" content="Discover remote job offers and sweepstakes for U.S. residents. Get started in seconds." />
+  <meta property="og:image" content="preview.jpg" />
+  <meta property="og:url" content="https://yourusername.github.io/OnlineNow/" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0a0a url('https://images.unsplash.com/photo-1587614382346-ac7f1aab7f5c') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 60px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .logo img {
+      max-width: 180px;
+      margin-bottom: 20px;
+    }
+    .preview img {
+      max-width: 100%;
+      margin: 20px auto;
+      border-radius: 8px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+    }
+    a {
+      color: #00ffff;
+      text-decoration: underline;
+    }
+    .spinner {
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      border-top: 4px solid #00ffff;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="logo"><img src="logo.png" alt="OnlineNow logo" /></div>
+    <h1>Find Remote Jobs in the USA</h1>
+    <div class="preview"><img src="preview.jpg" alt="Remote job preview" /></div>
+    <p>You will be redirected in <span id="countdown">5</span> seconds.</p>
+    <div class="spinner" id="spinner"></div>
+    <p><a id="manualLink" href="#">Click here if not redirected</a></p>
+    <p id="fallback" style="display:none;">Not in the United States? <a href="https://nx2bs.com/c?o=429&a=26132">Try this worldwide opportunity</a></p>
+    <footer>
+      <p>© 2026 OnlineNow. All rights reserved.</p>
+      <p><a href="#">Privacy Policy</a> | <a href="#">Disclaimer</a></p>
+    </footer>
+  </div>
+
+  <script>
+    const offers = [
+      "https://nx2bs.com/c?o=42&a=26132",
+      "https://nx2bs.com/c?o=44&a=26132",
+      "https://nx2bs.com/c?o=41&a=26132",
+      "https://nx2bs.com/c?o=429&a=26132",
+      "https://nx2bs.com/c?o=416&a=26132"
+    ];
+
+    let seen = JSON.parse(localStorage.getItem("seenOffers") || "[]");
+    let unseen = offers.filter(link => !seen.includes(link));
+    if (unseen.length === 0) {
+      seen = [];
+      unseen = [...offers];
+    }
+
+    const selectedOffer = unseen[Math.floor(Math.random() * unseen.length)];
+    seen.push(selectedOffer);
+    localStorage.setItem("seenOffers", JSON.stringify(seen));
+    document.getElementById("manualLink").href = selectedOffer;
+
+    fetch("https://ipapi.co/json/")
+      .then(res => res.json())
+      .then(data => {
+        if (data.country !== "US") {
+          document.getElementById("fallback").style.display = "block";
+          document.getElementById("spinner").style.display = "none";
+          document.getElementById("countdown").textContent = "—";
+        } else {
+          startRedirect();
+        }
+      })
+      .catch(() => startRedirect());
+
+    function startRedirect() {
+      let seconds = 5;
+      const countdown = document.getElementById("countdown");
+      const timer = setInterval(() => {
+        seconds--;
+        countdown.textContent = seconds;
+        if (seconds <= 0) {
+          clearInterval(timer);
+          window.location.href = selectedOffer;
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
