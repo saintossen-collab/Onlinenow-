@@ -199,3 +199,17 @@
     let exitShown = false;
     document.addEventListener("mouseout", function(e) {
       if (!exitShown && e.clientY < 50) {
+document.getElementById("exitPopup").style.display = "block";
+    exitShown = true;
+  }
+});
+
+window.addEventListener("scroll", function() {
+  const trigger = document.documentElement.scrollHeight / 2;
+  if (window.scrollY > trigger) {
+    document.getElementById("scrollCTA").style.display = "block";
+  }
+});
+</script>
+</body>
+</html>
