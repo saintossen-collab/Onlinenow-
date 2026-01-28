@@ -3,13 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>OnlineNow – Remote Jobs in the USA</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <meta name="description" content="Find legit remote jobs and sweepstakes offers for U.S. residents. OnlineNow helps you discover new opportunities daily." />
-  <meta property="og:title" content="OnlineNow – Remote Jobs in the USA" />
-  <meta property="og:description" content="Discover remote job offers and sweepstakes for U.S. residents. Get started in seconds." />
-  <meta property="og:image" content="preview.jpg" />
-  <meta property="og:url" content="https://saintossen-collab.github.io/Onlinenow-/" />
+  <title>OnlineNow – Remote Jobs</title>
+  <meta name="description" content="Find remote jobs quickly. Apply for work-from-home opportunities in seconds." />
   <style>
     :root{
       --accent:#00e5d4;
@@ -24,17 +19,15 @@
     .wrap{position:relative;z-index:2;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:36px;}
     .card{width:100%;max-width:var(--max-width);background:var(--panel);border-radius:var(--card-radius);padding:28px;box-sizing:border-box;box-shadow:0 12px 40px rgba(0,0,0,.6);text-align:center;}
     .top-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
-    .logo img{max-width:160px;height:auto;display:block;margin:0;}
+    .brand{display:flex;align-items:center;gap:12px;}
+    .brand h2{margin:0;font-size:18px;letter-spacing:0.2px;}
     h1{margin:8px 0 6px;font-size:28px;line-height:1.05;}
     .social-proof{color:var(--muted);margin-bottom:6px;font-size:15px;}
     .stats{display:flex;gap:18px;justify-content:center;margin:12px 0;flex-wrap:wrap;}
     .stat{background:rgba(255,255,255,0.03);padding:10px 14px;border-radius:10px;color:var(--muted);font-weight:700;font-size:14px;}
-    .preview img{width:100%;max-width:760px;border-radius:10px;display:block;margin:18px auto;}
+    .preview img{width:100%;max-width:760px;border-radius:10px;display:block;margin:18px auto;box-shadow:0 8px 30px rgba(0,0,0,0.6);}
     .companies{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;margin:12px 0;}
     .companies img{height:28px;opacity:.85;filter:grayscale(.2);}
-    .testimonials{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:18px 0;}
-    .t{background:rgba(255,255,255,0.03);padding:12px;border-radius:10px;max-width:340px;color:var(--muted);font-size:14px;text-align:left;}
-    .stars{color:gold;margin-bottom:6px;}
     .countdown{margin:18px 0;font-size:16px;color:var(--muted);}
     .spinner{width:40px;height:40px;border-radius:50%;border:4px solid rgba(255,255,255,0.12);border-top-color:var(--accent);margin:12px auto;animation:spin 1s linear infinite;}
     @keyframes spin{to{transform:rotate(360deg)}}
@@ -45,20 +38,10 @@
     #exitPopup{display:none;position:fixed;left:50%;top:18%;transform:translateX(-50%);background:#0b0b0b;padding:20px;border-radius:10px;border:2px solid var(--accent);z-index:9999;max-width:92%;width:420px;text-align:center;}
     #exitPopup button{background:var(--accent);border:none;padding:10px 16px;border-radius:8px;font-weight:700;cursor:pointer;}
     #scrollCTA{display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:18px;background:var(--accent);color:#000;padding:12px 20px;border-radius:999px;font-weight:700;text-decoration:none;z-index:9998;box-shadow:0 6px 20px rgba(0,0,0,.4);}
-    #fallback{display:none;color:var(--muted);margin-top:12px;}
-    /* testimonial carousel controls */
-    .carousel{position:relative;max-width:760px;margin:12px auto 0;}
-    .carousel-inner{display:flex;gap:12px;overflow:hidden;padding:6px;}
-    .carousel-track{display:flex;transition:transform .45s ease;}
-    .carousel-item{min-width:320px;flex:0 0 auto;}
-    .carousel-controls{display:flex;gap:8px;justify-content:center;margin-top:8px;}
-    .control{background:rgba(255,255,255,0.04);border:none;color:var(--muted);padding:8px 10px;border-radius:8px;cursor:pointer;}
     /* Responsive */
     @media (max-width:820px){
       .top-row{flex-direction:column;align-items:center;}
       h1{font-size:22px;}
-      .logo img{max-width:140px;}
-      .carousel-item{min-width:280px;}
     }
   </style>
 </head>
@@ -68,15 +51,17 @@
   <div class="wrap">
     <main class="card" role="main" aria-labelledby="main-heading">
       <div class="top-row">
-        <div class="logo"><img src="logo.png" alt="OnlineNow logo" /></div>
+        <div class="brand" aria-hidden="true">
+          <h2 style="color:var(--accent);margin-right:6px;">OnlineNow</h2>
+        </div>
         <div style="text-align:right;min-width:220px;">
           <div style="font-size:13px;color:var(--muted)">Verified offers • Secure checkout</div>
           <div style="margin-top:8px;font-weight:800;color:var(--accent)">Start now — it only takes 60 seconds</div>
         </div>
       </div>
 
-      <h1 id="main-heading">Find Remote Jobs in the USA</h1>
-      <div class="social-proof">Trusted by over <strong>12,000+</strong> remote job seekers this month.</div>
+      <h1 id="main-heading">Find Remote Jobs</h1>
+      <div class="social-proof">Trusted by thousands of remote job seekers.</div>
 
       <div class="stats" aria-hidden="true">
         <div class="stat">⭐ <strong>4.8/5</strong> average rating</div>
@@ -84,44 +69,16 @@
         <div class="stat">🌎 <strong>50</strong> states covered</div>
       </div>
 
-      <div class="preview"><img src="preview.jpg" alt="Preview of remote job opportunities" /></div>
-
-      <div class="companies" aria-hidden="true">
-        <img src="https://via.placeholder.com/120x28?text=Company+1" alt="Company 1" />
-        <img src="https://via.placeholder.com/120x28?text=Company+2" alt="Company 2" />
-        <img src="https://via.placeholder.com/120x28?text=Company+3" alt="Company 3" />
-        <img src="https://via.placeholder.com/120x28?text=Company+4" alt="Company 4" />
-      </div>
-
-      <div class="carousel" aria-label="User testimonials">
-        <div class="carousel-inner">
-          <div class="carousel-track" id="carouselTrack">
-            <div class="carousel-item">
-              <div class="t"><div class="stars">★★★★★</div>“I found my first remote job through OnlineNow in just 3 days! The process was fast and the offers were real.”<br><strong style="color:#fff">– Sarah, Texas</strong></div>
-            </div>
-            <div class="carousel-item">
-              <div class="t"><div class="stars">★★★★★</div>“Super easy to use and the offers are legit. Highly recommend to anyone looking for remote work.”<br><strong style="color:#fff">– Jamal, Florida</strong></div>
-            </div>
-            <div class="carousel-item">
-              <div class="t"><div class="stars">★★★★☆</div>“Great selection and quick payouts. Customer support answered my questions within hours.”<br><strong style="color:#fff">– Priya, California</strong></div>
-            </div>
-            <div class="carousel-item">
-              <div class="t"><div class="stars">★★★★★</div>“I applied to three roles and got two interviews in a week. Highly recommended.”<br><strong style="color:#fff">– Marcus, New York</strong></div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-controls">
-          <button class="control" id="prevBtn" aria-label="Previous testimonial">Prev</button>
-          <button class="control" id="nextBtn" aria-label="Next testimonial">Next</button>
-        </div>
+      <div class="preview" aria-hidden="true">
+        <img src="https://copilot.microsoft.com/th/id/BCO.5622b92a-a63c-4288-8047-3d1146687dad.png" alt="Remote work banner" />
       </div>
 
       <div class="countdown">You will be redirected in <strong id="countdown">5</strong> seconds.</div>
       <div class="spinner" id="spinner" aria-hidden="true"></div>
 
-      <a id="manualLink" class="cta" href="#" role="button">Start Now</a>
-
-      <div id="fallback" style="display:none">Not in the United States? <a href="https://nx2bs.com/c?o=429&a=26132" style="color:var(--accent);text-decoration:none;font-weight:700">Try this worldwide opportunity</a></div>
+      <!-- A/B test CTAs: only one is shown to each visitor -->
+      <a id="ctaA" class="cta" href="#" style="display:none">Start Now</a>
+      <a id="ctaB" class="cta" href="#" style="display:none">Claim My Remote Job</a>
 
       <div class="badges" aria-hidden="true">
         <div class="badge">🔒 Secure Site</div>
@@ -132,7 +89,7 @@
 
       <footer>
         <div>© 2026 OnlineNow. All rights reserved.</div>
-        <div style="margin-top:6px;"><a href="#" style="color:var(--muted);text-decoration:underline">Privacy Policy</a> | <a href="#" style="color:var(--muted);text-decoration:underline">Disclaimer</a></div>
+        <div style="margin-top:6px;color:var(--muted);font-size:13px;">Privacy Policy | Disclaimer</div>
       </footer>
     </main>
   </div>
@@ -145,8 +102,8 @@
   <a id="scrollCTA" href="#" aria-hidden="true">Start Now</a>
 
   <script>
-    (function(){
-      // Offer rotation list
+    document.addEventListener("DOMContentLoaded", function () {
+      // Offer targets
       const offers = [
         "https://nx2bs.com/c?o=42&a=26132",
         "https://nx2bs.com/c?o=44&a=26132",
@@ -155,8 +112,8 @@
         "https://nx2bs.com/c?o=416&a=26132"
       ];
 
-      // Pick an offer avoiding immediate repeats using localStorage
-      let selectedOffer = "#";
+      // Select an offer (with localStorage best-effort to avoid immediate repeats)
+      let selectedOffer = offers[Math.floor(Math.random() * offers.length)];
       try {
         let seen = JSON.parse(localStorage.getItem("seenOffers") || "[]");
         if (!Array.isArray(seen)) seen = [];
@@ -165,39 +122,61 @@
         selectedOffer = unseen[Math.floor(Math.random() * unseen.length)];
         seen.push(selectedOffer);
         localStorage.setItem("seenOffers", JSON.stringify(seen));
-      } catch (err) {
-        console.warn("localStorage unavailable", err);
-        selectedOffer = offers[Math.floor(Math.random() * offers.length)];
+      } catch (e) {
+        // localStorage unavailable, fallback to random selection
       }
 
-      // Set CTA links
-      const manual = document.getElementById("manualLink");
-      const scrollCTA = document.getElementById("scrollCTA");
-      manual.href = selectedOffer;
-      scrollCTA.href = selectedOffer;
-      document.getElementById("exitCTA").addEventListener("click", function(){ window.location.href = selectedOffer; });
+      // A/B test: choose variant A or B
+      const variant = Math.random() < 0.5 ? "A" : "B";
+      const ctaA = document.getElementById("ctaA");
+      const ctaB = document.getElementById("ctaB");
+      const shownCTA = variant === "A" ? ctaA : ctaB;
 
-      // Force redirect for everyone (no geo check)
-      const spinner = document.getElementById("spinner");
-      const countdownEl = document.getElementById("countdown");
-
-      function startRedirect(seconds = 5) {
-        let s = seconds;
-        countdownEl.textContent = s;
-        const t = setInterval(() => {
-          s--;
-          if (s < 0) {
-            clearInterval(t);
-            const href = document.getElementById("manualLink").href;
-            if (href && href !== "#") window.location.href = href;
-            return;
+      if (shownCTA) {
+        shownCTA.style.display = "inline-block";
+        shownCTA.href = selectedOffer;
+        // Track click silently using CountAPI
+        shownCTA.addEventListener("click", function () {
+          try {
+            navigator.sendBeacon && navigator.sendBeacon(`https://api.countapi.xyz/hit/onlinenow/cta${variant}`);
+            fetch(`https://api.countapi.xyz/hit/onlinenow/cta${variant}`, {method: 'GET', keepalive: true});
+          } catch (e) {
+            // ignore tracking errors
           }
-          countdownEl.textContent = s;
-        }, 1000);
+        });
+        // Accessibility label
+        shownCTA.setAttribute("aria-label", variant === "A" ? "Start Now - open offer" : "Claim My Remote Job - open offer");
       }
 
-      // Start redirect immediately for all visitors
-      startRedirect(5);
+      // Also wire exit popup and scroll CTA to the same selected offer
+      const exitCTA = document.getElementById("exitCTA");
+      const scrollCTA = document.getElementById("scrollCTA");
+      if (exitCTA) exitCTA.addEventListener("click", () => { window.location.href = selectedOffer; });
+      if (scrollCTA) { scrollCTA.href = selectedOffer; scrollCTA.addEventListener("click", () => {
+        try {
+          navigator.sendBeacon && navigator.sendBeacon(`https://api.countapi.xyz/hit/onlinenow/cta${variant}`);
+          fetch(`https://api.countapi.xyz/hit/onlinenow/cta${variant}`, {method: 'GET', keepalive: true});
+        } catch (e) {}
+      }); }
+
+      // Countdown + redirect (5 seconds)
+      const countdownEl = document.getElementById("countdown");
+      let seconds = 5;
+      if (countdownEl) countdownEl.textContent = seconds;
+      const timer = setInterval(() => {
+        seconds--;
+        if (countdownEl) countdownEl.textContent = seconds;
+        if (seconds <= 0) {
+          clearInterval(timer);
+          // Final navigation
+          window.location.href = selectedOffer;
+        }
+      }, 1000);
+
+      // Stop redirect if user clicks the CTA (friendly UX)
+      if (shownCTA) {
+        shownCTA.addEventListener("click", () => clearInterval(timer));
+      }
 
       // Exit intent popup (desktop)
       let exitShown = false;
@@ -206,28 +185,31 @@
         if (e.clientY <= 10 && !e.relatedTarget) {
           exitShown = true;
           const popup = document.getElementById("exitPopup");
-          popup.style.display = "block";
-          popup.setAttribute("aria-hidden","false");
+          if (popup) {
+            popup.style.display = "block";
+            popup.setAttribute("aria-hidden","false");
+          }
         }
       });
 
       // Scroll-triggered sticky CTA
       window.addEventListener("scroll", function(){
         const trigger = document.documentElement.scrollHeight / 3;
-        const scrollCTA = document.getElementById("scrollCTA");
+        const scrollCTAEl = document.getElementById("scrollCTA");
+        if (!scrollCTAEl) return;
         if (window.scrollY > trigger) {
-          scrollCTA.style.display = "inline-block";
-          scrollCTA.setAttribute("aria-hidden","false");
+          scrollCTAEl.style.display = "inline-block";
+          scrollCTAEl.setAttribute("aria-hidden","false");
         } else {
-          scrollCTA.style.display = "none";
-          scrollCTA.setAttribute("aria-hidden","true");
+          scrollCTAEl.style.display = "none";
+          scrollCTAEl.setAttribute("aria-hidden","true");
         }
       });
 
       // Close exit popup if user clicks outside or presses Escape
       document.addEventListener("click", function(e){
         const popup = document.getElementById("exitPopup");
-        if (popup.style.display === "block" && !popup.contains(e.target) && e.target.id !== "exitCTA") {
+        if (popup && popup.style.display === "block" && !popup.contains(e.target) && e.target.id !== "exitCTA") {
           popup.style.display = "none";
           popup.setAttribute("aria-hidden","true");
         }
@@ -235,39 +217,18 @@
       document.addEventListener("keydown", function(e){
         if (e.key === "Escape") {
           const popup = document.getElementById("exitPopup");
-          popup.style.display = "none";
-          popup.setAttribute("aria-hidden","true");
+          if (popup) {
+            popup.style.display = "none";
+            popup.setAttribute("aria-hidden","true");
+          }
         }
       });
 
-      // Accessibility: label CTA
-      window.addEventListener("load", function(){
-        if (manual) manual.setAttribute("aria-label","Start Now - open offer");
-      });
-
-      // Simple testimonial carousel
-      (function carouselInit(){
-        const track = document.getElementById("carouselTrack");
-        if (!track) return;
-        const items = track.children;
-        const prev = document.getElementById("prevBtn");
-        const next = document.getElementById("nextBtn");
-        let index = 0;
-        function update() {
-          const w = items[0].getBoundingClientRect().width + 12; // item width + gap
-          track.style.transform = `translateX(${-index * w}px)`;
-        }
-        // auto-advance
-        let auto = setInterval(()=>{ index = (index+1) % items.length; update(); }, 4500);
-        // controls
-        prev && prev.addEventListener("click", ()=>{ index = (index-1+items.length)%items.length; update(); resetAuto(); });
-        next && next.addEventListener("click", ()=>{ index = (index+1)%items.length; update(); resetAuto(); });
-        function resetAuto(){ clearInterval(auto); auto = setInterval(()=>{ index = (index+1) % items.length; update(); }, 4500); }
-        window.addEventListener("resize", update);
-        update();
-      })();
-
-    })();
+      // Defensive logging for debugging
+      if (!ctaA) console.warn("ctaA element not found");
+      if (!ctaB) console.warn("ctaB element not found");
+      if (!countdownEl) console.warn("countdown element not found");
+    });
   </script>
 </body>
-  </html>
+</html>
