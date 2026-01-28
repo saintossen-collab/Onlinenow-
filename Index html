@@ -94,122 +94,231 @@
       max-width: 90%;
       text-align: center;
     }
-    #exitPopup button {
-      background: #00ffff;
-      border: none;
-      padding: 10px 20px;
-      margin-top: 15px;
-      font-weight: bold;
-      cursor: pointer;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OnlineNow – Remote Jobs in the USA</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Find legit remote jobs and sweepstakes offers for U.S. residents. OnlineNow helps you discover new opportunities daily." />
+  <meta property="og:title" content="OnlineNow – Remote Jobs in the USA" />
+  <meta property="og:description" content="Discover remote job offers and sweepstakes for U.S. residents. Get started in seconds." />
+  <meta property="og:image" content="preview.jpg" />
+  <meta property="og:url" content="https://saintossen-collab.github.io/Onlinenow-/" />
+  <style>
+    :root{
+      --accent:#00e5d4;
+      --bg:#070707;
+      --panel:rgba(0,0,0,0.75);
+      --muted:#bfc7c7;
+      --max-width:980px;
     }
-    #scrollCTA {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #00ffff;
-      color: #000;
-      padding: 12px 24px;
-      border-radius: 6px;
-      font-weight: bold;
-      text-decoration: none;
-      z-index: 9999;
+    html,body{height:100%;margin:0;font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;background:var(--bg);color:#fff;}
+    .bg{
+      position:fixed;inset:0;background-image:url('https://images.unsplash.com/photo-1587614382346-ac7f1aab7f5c');background-size:cover;background-position:center;filter:brightness(.35);z-index:0;
+    }
+    .wrap{position:relative;z-index:2;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:36px;}
+    .card{width:100%;max-width:var(--max-width);background:var(--panel);border-radius:12px;padding:32px;box-sizing:border-box;box-shadow:0 10px 40px rgba(0,0,0,.6);text-align:center;}
+    .logo img{max-width:160px;height:auto;display:block;margin:0 auto 18px;}
+    h1{margin:0 0 6px;font-size:28px;line-height:1.05;}
+    .social-proof{color:var(--muted);margin-bottom:18px;font-size:15px;}
+    .preview img{width:100%;max-width:720px;border-radius:8px;display:block;margin:18px auto;}
+    .testimonials{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:18px 0;}
+    .testimonials .t{background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;max-width:320px;color:var(--muted);font-size:14px;}
+    .countdown{margin:18px 0;font-size:16px;color:var(--muted);}
+    .spinner{width:40px;height:40px;border-radius:50%;border:4px solid rgba(255,255,255,0.12);border-top-color:var(--accent);margin:12px auto;animation:spin 1s linear infinite;}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .cta{display:inline-block;background:var(--accent);color:#000;padding:12px 22px;border-radius:8px;font-weight:700;text-decoration:none;margin-top:12px;}
+    .badges{margin-top:18px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+    .badge{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:8px;color:var(--muted);font-size:13px;}
+    footer{margin-top:22px;color:var(--muted);font-size:13px;}
+    #exitPopup{display:none;position:fixed;left:50%;top:18%;transform:translateX(-50%);background:#0b0b0b;padding:20px;border-radius:10px;border:2px solid var(--accent);z-index:9999;max-width:92%;width:420px;text-align:center;}
+    #exitPopup button{background:var(--accent);border:none;padding:10px 16px;border-radius:8px;font-weight:700;cursor:pointer;}
+    #scrollCTA{display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:18px;background:var(--accent);color:#000;padding:12px 20px;border-radius:999px;font-weight:700;text-decoration:none;z-index:9998;box-shadow:0 6px 20px rgba(0,0,0,.4);}
+    #fallback{display:none;color:var(--muted);margin-top:12px;}
+    /* Responsive */
+    @media (max-width:720px){
+      .card{padding:20px;border-radius:10px;}
+      h1{font-size:20px;}
+      .logo img{max-width:140px;}
+      .testimonials{flex-direction:column;align-items:center;}
     }
   </style>
 </head>
 <body>
-  <div class="overlay">
-    <div class="logo"><img src="logo.png" alt="OnlineNow logo" /></div>
-    <h1>Find Remote Jobs in the USA</h1>
-    <p class="social-proof">Trusted by over <strong>12,000+ remote job seekers</strong> this month.</p>
-    <div class="preview"><img src="preview.jpg" alt="Remote job preview" /></div>
-    <div style="margin: 30px auto; max-width: 500px;">
-      <p style="font-style: italic; color: #ccc;">“I found my first remote job through OnlineNow in just 3 days!”<br><strong>– Sarah, Texas</strong></p>
-      <p style="font-style: italic; color: #ccc;">“Super easy to use and the offers are legit. Highly recommend.”<br><strong>– Jamal, Florida</strong></p>
-    </div>
-    <p>You will be redirected in <span id="countdown">5</span> seconds.</p>
-    <div class="spinner" id="spinner"></div>
-    <a id="manualLink" href="#" style="display:inline-block; background:#00ffff; color:#000; padding:12px 24px; border-radius:6px; font-weight:bold; text-decoration:none; margin: 10px auto;">Start Now</a>
-    <p id="fallback" style="display:none;">Not in the United States? <a href="https://nx2bs.com/c?o=429&a=26132">Try this worldwide opportunity</a></p>
-    <div style="margin-top: 30px;">
-      <img src="https://img.icons8.com/ios-filled/50/00ffff/lock--v1.png" alt="Secure Site" title="Secure Site" style="width:32px; margin: 0 10px;" />
-      <img src="https://img.icons8.com/ios-filled/50/00ffff/approval.png" alt="Verified Offers" title="Verified Offers" style="width:32px; margin: 0 10px;" />
-      <img src="https://img.icons8.com/ios-filled/50/00ffff/privacy.png" alt="Privacy Protected" title="Privacy Protected" style="width:32px; margin: 0 10px;" />
-    </div>
-    <footer>
-      <p>© 2026 OnlineNow. All rights reserved.</p>
-      <p><a href="#">Privacy Policy</a> | <a href="#">Disclaimer</a></p>
-    </footer>
+  <div class="bg" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <main class="card" role="main" aria-labelledby="main-heading">
+      <div class="logo"><img src="logo.png" alt="OnlineNow logo" /></div>
+      <h1 id="main-heading">Find Remote Jobs in the USA</h1>
+      <div class="social-proof">Trusted by over <strong>12,000+</strong> remote job seekers this month.</div>
+
+      <div class="preview"><img src="preview.jpg" alt="Preview of remote job opportunities" /></div>
+
+      <div class="testimonials" aria-label="Testimonials">
+        <div class="t">“I found my first remote job through OnlineNow in just 3 days!”<br><strong style="color:#fff">– Sarah, Texas</strong></div>
+        <div class="t">“Super easy to use and the offers are legit. Highly recommend.”<br><strong style="color:#fff">– Jamal, Florida</strong></div>
+      </div>
+
+      <div class="countdown">You will be redirected in <strong id="countdown">5</strong> seconds.</div>
+      <div class="spinner" id="spinner" aria-hidden="true"></div>
+
+      <a id="manualLink" class="cta" href="#" role="button">Start Now</a>
+
+      <div id="fallback">Not in the United States? <a href="https://nx2bs.com/c?o=429&a=26132" style="color:var(--accent);text-decoration:none;font-weight:700">Try this worldwide opportunity</a></div>
+
+      <div class="badges" aria-hidden="true">
+        <div class="badge">🔒 Secure Site</div>
+        <div class="badge">✅ Verified Offers</div>
+        <div class="badge">🛡️ Privacy Protected</div>
+      </div>
+
+      <footer>
+        <div>© 2026 OnlineNow. All rights reserved.</div>
+        <div style="margin-top:6px;"><a href="#" style="color:var(--muted);text-decoration:underline">Privacy Policy</a> | <a href="#" style="color:var(--muted);text-decoration:underline">Disclaimer</a></div>
+      </footer>
+    </main>
   </div>
 
-  <div id="exitPopup">
-    <p>Wait! Don’t leave yet — grab your remote job opportunity now!</p>
-    <button onclick="window.location.href=document.getElementById('manualLink').href">Start Now</button>
+  <div id="exitPopup" role="dialog" aria-modal="true" aria-hidden="true">
+    <p style="margin:0 0 12px">Wait! Don’t leave yet — grab your remote job opportunity now!</p>
+    <button id="exitCTA">Start Now</button>
   </div>
 
-  <a id="scrollCTA" href="#">Start Now</a>
+  <a id="scrollCTA" href="#" aria-hidden="true">Start Now</a>
 
   <script>
-    const offers = [
-      "https://nx2bs.com/c?o=42&a=26132",
-      "https://nx2bs.com/c?o=44&a=26132",
-      "https://nx2bs.com/c?o=41&a=26132",
-      "https://nx2bs.com/c?o=429&a=26132",
-      "https://nx2bs.com/c?o=416&a=26132"
-    ];
-    let seen = JSON.parse(localStorage.getItem("seenOffers") || "[]");
-    let unseen = offers.filter(link => !seen.includes(link));
-    if (unseen.length === 0) {
-      seen = [];
-      unseen = [...offers];
-    }
-    const selectedOffer = unseen[Math.floor(Math.random() * unseen.length)];
-    seen.push(selectedOffer);
-    localStorage.setItem("seenOffers", JSON.stringify(seen));
-    document.getElementById("manualLink").href = selectedOffer;
-    document.getElementById("scrollCTA").href = selectedOffer;
+    (function(){
+      // Offer rotation list
+      const offers = [
+        "https://nx2bs.com/c?o=42&a=26132",
+        "https://nx2bs.com/c?o=44&a=26132",
+        "https://nx2bs.com/c?o=41&a=26132",
+        "https://nx2bs.com/c?o=429&a=26132",
+        "https://nx2bs.com/c?o=416&a=26132"
+      ];
 
-    fetch("https://ipapi.co/json/")
-      .then(res => res.json())
-      .then(data => {
-        if (data.country !== "US") {
-          document.getElementById("fallback").style.display = "block";
-          document.getElementById("spinner").style.display = "none";
-          document.getElementById("countdown").textContent = "—";
+      // Pick an offer avoiding immediate repeats using localStorage
+      try {
+        let seen = JSON.parse(localStorage.getItem("seenOffers") || "[]");
+        if (!Array.isArray(seen)) seen = [];
+        let unseen = offers.filter(o => !seen.includes(o));
+        if (unseen.length === 0) { seen = []; unseen = offers.slice(); }
+        const selectedOffer = unseen[Math.floor(Math.random() * unseen.length)];
+        seen.push(selectedOffer);
+        localStorage.setItem("seenOffers", JSON.stringify(seen));
+        // Set CTA links
+        const manual = document.getElementById("manualLink");
+        const scrollCTA = document.getElementById("scrollCTA");
+        manual.href = selectedOffer;
+        scrollCTA.href = selectedOffer;
+        document.getElementById("exitCTA").addEventListener("click", function(){ window.location.href = selectedOffer; });
+      } catch (err) {
+        console.warn("localStorage unavailable", err);
+      }
+
+      // Geo-targeting: show fallback for non-US users
+      const spinner = document.getElementById("spinner");
+      const fallback = document.getElementById("fallback");
+      const countdownEl = document.getElementById("countdown");
+      let redirectAllowed = true;
+
+      function startRedirect(seconds = 5) {
+        let s = seconds;
+        countdownEl.textContent = s;
+        const t = setInterval(() => {
+          s--;
+          if (s < 0) {
+            clearInterval(t);
+            // final redirect to the manual link href
+            const href = document.getElementById("manualLink").href;
+            if (href && href !== "#") window.location.href = href;
+            return;
+          }
+          countdownEl.textContent = s;
+        }, 1000);
+      }
+
+      // Use a public IP geolocation service; if blocked, default to redirect
+      fetch("https://ipapi.co/json/")
+        .then(r => r.json())
+        .then(data => {
+          if (!data || !data.country) {
+            startRedirect();
+            return;
+          }
+          if (data.country !== "US") {
+            // Non-US: show fallback and stop redirect
+            fallback.style.display = "block";
+            spinner.style.display = "none";
+            countdownEl.textContent = "—";
+            redirectAllowed = false;
+          } else {
+            startRedirect(5);
+          }
+        })
+        .catch(() => {
+          // If geo lookup fails, proceed with redirect
+          startRedirect(5);
+        });
+
+      // Exit intent popup (desktop)
+      let exitShown = false;
+      document.addEventListener("mouseout", function(e){
+        // Trigger when mouse leaves viewport at top
+        if (exitShown) return;
+        if (e.clientY <= 10 && !e.relatedTarget) {
+          exitShown = true;
+          const popup = document.getElementById("exitPopup");
+          popup.style.display = "block";
+          popup.setAttribute("aria-hidden","false");
+        }
+      });
+
+      // Scroll-triggered sticky CTA
+      window.addEventListener("scroll", function(){
+        const trigger = document.documentElement.scrollHeight / 3;
+        const scrollCTA = document.getElementById("scrollCTA");
+        if (window.scrollY > trigger) {
+          scrollCTA.style.display = "inline-block";
+          scrollCTA.setAttribute("aria-hidden","false");
         } else {
-          startRedirect();
+          scrollCTA.style.display = "none";
+          scrollCTA.setAttribute("aria-hidden","true");
         }
-      })
-      .catch(() => startRedirect());
+      });
 
-    function startRedirect() {
-      let seconds = 5;
-      const countdown = document.getElementById("countdown");
-      const timer = setInterval(() => {
-        seconds--;
-        countdown.textContent = seconds;
-        if (seconds <= 0) {
-          clearInterval(timer);
-          window.location.href = selectedOffer;
+      // Close exit popup if user clicks outside or presses Escape
+      document.addEventListener("click", function(e){
+        const popup = document.getElementById("exitPopup");
+        if (popup.style.display === "block" && !popup.contains(e.target) && e.target.id !== "exitCTA") {
+          popup.style.display = "none";
+          popup.setAttribute("aria-hidden","true");
         }
-      }, 1000);
-    }
+      });
+      document.addEventListener("keydown", function(e){
+        if (e.key === "Escape") {
+          const popup = document.getElementById("exitPopup");
+          popup.style.display = "none";
+          popup.setAttribute("aria-hidden","true");
+        }
+      });
 
-    let exitShown = false;
-    document.addEventListener("mouseout", function(e) {
-      if (!exitShown && e.clientY < 50) {
-document.getElementById("exitPopup").style.display = "block";
-    exitShown = true;
-  }
-});
+      // Accessibility: focus manual CTA on load for keyboard users
+      window.addEventListener("load", function(){
+        const manual = document.getElementById("manualLink");
+        if (manual) manual.setAttribute("aria-label","Start Now - open offer");
+      });
 
-window.addEventListener("scroll", function() {
-  const trigger = document.documentElement.scrollHeight / 2;
-  if (window.scrollY > trigger) {
-    document.getElementById("scrollCTA").style.display = "block";
-  }
-});
-</script>
+      // If user clicks manual CTA, stop any further JS redirect logic (defensive)
+      document.getElementById("manualLink").addEventListener("click", function(){
+        // no-op: link will navigate naturally
+      });
+
+    })();
+  </script>
 </body>
 </html>
