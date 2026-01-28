@@ -5,17 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OnlineNow – Remote Jobs in the USA</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
-
-  <!-- SEO Meta Tags -->
   <meta name="description" content="Find legit remote jobs and sweepstakes offers for U.S. residents. OnlineNow helps you discover new opportunities daily." />
-  <meta name="keywords" content="remote jobs USA, online work, sweepstakes, CPA offers, OnlineNow" />
-
-  <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="OnlineNow – Remote Jobs in the USA" />
   <meta property="og:description" content="Discover remote job offers and sweepstakes for U.S. residents. Get started in seconds." />
   <meta property="og:image" content="preview.jpg" />
-  <meta property="og:url" content="https://yourusername.github.io/OnlineNow/" />
-
+  <meta property="og:url" content="https://saintossen-collab.github.io/Onlinenow-/" />
   <style>
     body {
       margin: 0;
@@ -45,6 +39,12 @@
     }
     h1 {
       font-size: 2em;
+      margin-bottom: 10px;
+    }
+    .social-proof {
+      font-size: 1em;
+      color: #ccc;
+      margin-top: -10px;
       margin-bottom: 20px;
     }
     p {
@@ -73,22 +73,82 @@
       font-size: 0.9em;
       color: #aaa;
     }
+    @media (max-width: 600px) {
+      h1 { font-size: 1.5em; }
+      p { font-size: 1em; }
+      .logo img { max-width: 140px; }
+      .overlay { padding: 40px 15px; }
+    }
+    #exitPopup {
+      display: none;
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #111;
+      color: white;
+      padding: 30px;
+      border: 2px solid #00ffff;
+      border-radius: 10px;
+      z-index: 9999;
+      max-width: 90%;
+      text-align: center;
+    }
+    #exitPopup button {
+      background: #00ffff;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #scrollCTA {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #00ffff;
+      color: #000;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      z-index: 9999;
+    }
   </style>
 </head>
 <body>
   <div class="overlay">
     <div class="logo"><img src="logo.png" alt="OnlineNow logo" /></div>
     <h1>Find Remote Jobs in the USA</h1>
+    <p class="social-proof">Trusted by over <strong>12,000+ remote job seekers</strong> this month.</p>
     <div class="preview"><img src="preview.jpg" alt="Remote job preview" /></div>
+    <div style="margin: 30px auto; max-width: 500px;">
+      <p style="font-style: italic; color: #ccc;">“I found my first remote job through OnlineNow in just 3 days!”<br><strong>– Sarah, Texas</strong></p>
+      <p style="font-style: italic; color: #ccc;">“Super easy to use and the offers are legit. Highly recommend.”<br><strong>– Jamal, Florida</strong></p>
+    </div>
     <p>You will be redirected in <span id="countdown">5</span> seconds.</p>
     <div class="spinner" id="spinner"></div>
-    <p><a id="manualLink" href="#">Click here if not redirected</a></p>
+    <a id="manualLink" href="#" style="display:inline-block; background:#00ffff; color:#000; padding:12px 24px; border-radius:6px; font-weight:bold; text-decoration:none; margin: 10px auto;">Start Now</a>
     <p id="fallback" style="display:none;">Not in the United States? <a href="https://nx2bs.com/c?o=429&a=26132">Try this worldwide opportunity</a></p>
+    <div style="margin-top: 30px;">
+      <img src="https://img.icons8.com/ios-filled/50/00ffff/lock--v1.png" alt="Secure Site" title="Secure Site" style="width:32px; margin: 0 10px;" />
+      <img src="https://img.icons8.com/ios-filled/50/00ffff/approval.png" alt="Verified Offers" title="Verified Offers" style="width:32px; margin: 0 10px;" />
+      <img src="https://img.icons8.com/ios-filled/50/00ffff/privacy.png" alt="Privacy Protected" title="Privacy Protected" style="width:32px; margin: 0 10px;" />
+    </div>
     <footer>
       <p>© 2026 OnlineNow. All rights reserved.</p>
       <p><a href="#">Privacy Policy</a> | <a href="#">Disclaimer</a></p>
     </footer>
   </div>
+
+  <div id="exitPopup">
+    <p>Wait! Don’t leave yet — grab your remote job opportunity now!</p>
+    <button onclick="window.location.href=document.getElementById('manualLink').href">Start Now</button>
+  </div>
+
+  <a id="scrollCTA" href="#">Start Now</a>
 
   <script>
     const offers = [
@@ -98,18 +158,17 @@
       "https://nx2bs.com/c?o=429&a=26132",
       "https://nx2bs.com/c?o=416&a=26132"
     ];
-
     let seen = JSON.parse(localStorage.getItem("seenOffers") || "[]");
     let unseen = offers.filter(link => !seen.includes(link));
     if (unseen.length === 0) {
       seen = [];
       unseen = [...offers];
     }
-
     const selectedOffer = unseen[Math.floor(Math.random() * unseen.length)];
     seen.push(selectedOffer);
     localStorage.setItem("seenOffers", JSON.stringify(seen));
     document.getElementById("manualLink").href = selectedOffer;
+    document.getElementById("scrollCTA").href = selectedOffer;
 
     fetch("https://ipapi.co/json/")
       .then(res => res.json())
@@ -136,6 +195,7 @@
         }
       }, 1000);
     }
-  </script>
-</body>
-</html>
+
+    let exitShown = false;
+    document.addEventListener("mouseout", function(e) {
+      if (!exitShown && e.clientY < 50) {
